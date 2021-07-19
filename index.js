@@ -1,5 +1,14 @@
-const Person = require("./person");
+const http = require('http')
+const path = require('path')
+const fs = require('fs')
 
-const person1 = new Person("John Doe", 30);
+const server = http.createServer((req, res) => {
+    if(req.url === '/') {
+        res.end('<h1>Homepage</h1>')
+    }
 
-person1.greeting();
+})
+
+const PORT = process.env.PORT || 5000;
+
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
